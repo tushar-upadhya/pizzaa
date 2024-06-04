@@ -33,7 +33,7 @@ const SignUpHome = () => {
               type="text"
               required
               className="w-full px-3 py-2 leading-tight text-gray-700 border border-gray-300 rounded shadow appearance-none focus:border-indigo-700 dark:text-gray-100 focus:outline-none focus:shadow-outline"
-              value={credentials.name}
+              // value={credentials.name}
             />
           </div>
 
@@ -52,7 +52,7 @@ const SignUpHome = () => {
               type="email"
               required
               className="w-full px-3 py-2 leading-tight text-gray-700 border border-gray-300 rounded shadow appearance-none focus:border-indigo-700 dark:text-gray-100 focus:outline-none focus:shadow-outline"
-              value={credentials.email}
+              // value={credentials.email}
             />
           </div>
 
@@ -71,7 +71,7 @@ const SignUpHome = () => {
               required
               type="password"
               className="w-full px-3 py-2 leading-tight text-gray-700 border border-gray-300 rounded shadow appearance-none focus:border-indigo-700 dark:text-gray-100 focus:outline-none focus:shadow-outline"
-              value={credentials.password}
+              // value={credentials.password}
             />
           </div>
 
@@ -90,7 +90,7 @@ const SignUpHome = () => {
               required
               type="text"
               className="w-full px-3 py-2 leading-tight text-gray-700 border border-gray-300 rounded shadow appearance-none focus:border-indigo-700 dark:text-gray-100 focus:outline-none focus:shadow-outline"
-              value={credentials.geolocation}
+              // value={credentials.geolocation}
             />
           </div>
 
