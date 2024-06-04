@@ -1,6 +1,13 @@
 import Link from "next/link";
+import { useState } from "react";
 
 const LoginPage = () => {
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+
+  const handleChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
+
   return (
     <div
       style={{
