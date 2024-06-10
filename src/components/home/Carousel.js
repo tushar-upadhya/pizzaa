@@ -1,9 +1,10 @@
+import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const CarouselComponent = () => {
-  const imageProp = ["pizza", "burger", "milkshake"];
+const imageProp = ["pizza", "burger", "milkshake"];
 
+function CarouselComponent() {
   return (
     <Carousel
       autoPlay
@@ -29,6 +30,6 @@ const CarouselComponent = () => {
       })}
     </Carousel>
   );
-};
+}
 
 export default CarouselComponent;
