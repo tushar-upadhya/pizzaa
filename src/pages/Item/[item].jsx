@@ -1,14 +1,13 @@
 import { baseUrl } from "@/utils/baseUrl";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
-function Item({ data }) {
+const ItemPage = ({ data }) => {
   console.log();
   return (
     <div className="min-h-screen px-10">
       <Link href={"/"}>
-        <div className="container max-w-md  flex my-6 cursor-pointer hover:scale-125  justify-center items-center mx-auto ">
+        <div className="container flex items-center justify-center max-w-md mx-auto my-6 cursor-pointer hover:scale-125 ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -26,8 +25,8 @@ function Item({ data }) {
         </div>
       </Link>
 
-      <div className="container border-gradient max-w-md p-6 md:p-8 mb-16 mx-auto  flex space-y-4 flex-col items-center justify-center">
-        <div className="relative w-full h-96 rounded-lg lg:w-96">
+      <div className="container flex flex-col items-center justify-center max-w-md p-6 mx-auto mb-16 space-y-4 border-gradient md:p-8">
+        <div className="relative w-full rounded-lg h-96 lg:w-96">
           <Image
             src={data.img}
             className="rounded-lg"
@@ -37,18 +36,18 @@ function Item({ data }) {
           />
         </div>
 
-        <div className="font-extrabold mb-2 text-base md:text-2xl uppercase ">
+        <div className="mb-2 text-base font-extrabold uppercase md:text-2xl ">
           {data.name}
         </div>
-        <div className=" max-w-sm text-base md:text-lg text-gray-700 dark:text-gray-400">
+        <div className="max-w-sm text-base text-gray-700 md:text-lg dark:text-gray-400">
           {data.description}
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default Item;
+export default ItemPage;
 
 export async function getServerSideProps(context) {
   const { item } = context.query;

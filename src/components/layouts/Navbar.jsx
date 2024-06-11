@@ -2,9 +2,9 @@ import { CartContext } from "@/utils/ContextReducer";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
-function Navbar() {
+const Navbar = () => {
   const [mounted, setMounted] = useState(false);
   const { state } = useContext(CartContext);
   const { theme, setTheme } = useTheme();
@@ -13,21 +13,22 @@ function Navbar() {
     setMounted(true);
   }, []);
   if (!mounted) return null;
+
   return (
-    <header className="text-white-100 sticky top-0 z-50 bg-gradient-to-r from-indigo-700 via-violet-700 to-orange-700 body-font">
-      <div className="container mx-auto flex flex-wrap  p-3 flex-col md:flex-row items-center">
+    <header className="sticky top-0 z-50 text-white-100 bg-gradient-to-r from-indigo-700 via-violet-700 to-orange-700 body-font">
+      <div className="container flex flex-col flex-wrap items-center p-3 mx-auto md:flex-row">
         <Link
           href={"/"}
-          className="flex title-font font-extrabold items-center  uppercase text-gray-100"
+          className="flex items-center font-extrabold text-gray-100 uppercase title-font"
         >
           <Image alt="Navbar Logo" src={"/Pizza.svg"} width={60} height={60} />
-          <p className="leading-5 text-xl mx-2">Pizza Wizza</p>
+          <p className="mx-2 text-xl leading-5">Pizza Wizza</p>
         </Link>
 
-        <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <nav className="flex flex-wrap items-center justify-center text-base md:ml-auto">
           <Link
             href={"/cart"}
-            className="text-white mr-5 cursor-pointer hover:text-gray-200 flex items-center"
+            className="flex items-center mr-5 text-white cursor-pointer hover:text-gray-200"
           >
             Cart
             <svg
@@ -53,7 +54,7 @@ function Navbar() {
               {JSON.parse(localStorage.getItem("isAdmin")) === true ? (
                 <Link
                   href={"/admin"}
-                  className="text-white mr-5 cursor-pointer hover:text-gray-200 flex items-center"
+                  className="flex items-center mr-5 text-white cursor-pointer hover:text-gray-200"
                 >
                   Admin
                   <svg
@@ -74,7 +75,7 @@ function Navbar() {
               ) : null}
               <Link
                 href={"/orders"}
-                className="text-white mr-5 cursor-pointer hover:text-gray-200 flex items-center"
+                className="flex items-center mr-5 text-white cursor-pointer hover:text-gray-200"
               >
                 My Orders
                 <svg
@@ -93,17 +94,17 @@ function Navbar() {
                 </svg>
               </Link>
               <Link
-                href={"/login"}
+                href={"/loginpage"}
                 onClick={() => {
                   localStorage.removeItem("token");
                   localStorage.removeItem("userEmail");
                 }}
-                className="text-white mr-5 cursor-pointer hover:text-gray-200 flex items-center"
+                className="flex items-center mr-5 text-white cursor-pointer hover:text-gray-200"
               >
                 Logout
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 mx-1"
+                  className="w-6 h-6 mx-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -121,12 +122,12 @@ function Navbar() {
             <>
               <Link
                 href={"/login"}
-                className="text-white mr-5 cursor-pointer hover:text-gray-200 flex items-center"
+                className="flex items-center mr-5 text-white cursor-pointer hover:text-gray-200"
               >
                 Login
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 mx-1"
+                  className="w-6 h-6 mx-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -141,9 +142,9 @@ function Navbar() {
               </Link>
               <Link
                 href={"/signup"}
-                className="text-white mr-5 cursor-pointer hover:text-gray-200 flex items-center"
+                className="flex items-center mr-5 text-white cursor-pointer hover:text-gray-200"
               >
-                Signup
+                SignUp
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -164,7 +165,7 @@ function Navbar() {
         </nav>
         <button
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="text-white bg-black rounded-full p-1  dark:text-black dark:bg-white flex items-center"
+          className="flex items-center p-1 text-white bg-black rounded-full dark:text-black dark:bg-white"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -199,6 +200,6 @@ function Navbar() {
       </div>
     </header>
   );
-}
+};
 
 export default Navbar;

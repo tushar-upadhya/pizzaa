@@ -1,9 +1,9 @@
 import { CartContext } from "@/utils/ContextReducer";
 import { useRouter } from "next/router";
 
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 
-function Cart() {
+const CartPage = () => {
   const { state, dispatch } = useContext(CartContext);
   const [errorMessage, setErrorMessage] = useState(
     "Your order was canceled 😔"
@@ -11,6 +11,7 @@ function Cart() {
   const router = useRouter();
   const [success, setSuccess] = useState(false);
   const [fail, setFail] = useState(false);
+
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
     console.log(localStorage.getItem("userEmail"));
@@ -43,6 +44,7 @@ function Cart() {
       });
     }
   };
+
   let totalPrice = state.reduce((total, food) => total + food.price, 0);
   return (
     <>
@@ -96,7 +98,7 @@ function Cart() {
       )}
       {fail && (
         <div
-          className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+          className="relative px-4 py-3 text-red-700 bg-red-100 border border-red-400 rounded"
           role="alert"
         >
           <div className="flex">
@@ -251,7 +253,7 @@ function Cart() {
                                 {data.size}
                               </td>
                               <td class="whitespace-nowrap  px-6 py-4">
-                                <div className="  flex flex-row  ">
+                                <div className="flex flex-row ">
                                   <svg
                                     onClick={() => {
                                       dispatch({
@@ -265,7 +267,7 @@ function Cart() {
                                     viewBox="0 0 24 24"
                                     strokeWidth={1.5}
                                     stroke="currentColor"
-                                    className="w-6 hover:cursor-pointer hover:scale-125 mx-3 h-6 hover:text-green-500"
+                                    className="w-6 h-6 mx-3 hover:cursor-pointer hover:scale-125 hover:text-green-500"
                                   >
                                     <path
                                       strokeLinecap="round"
@@ -295,7 +297,7 @@ function Cart() {
                                     viewBox="0 0 24 24"
                                     strokeWidth={1.5}
                                     stroke="currentColor"
-                                    className="w-6 mx-3 h-6 hover:cursor-pointer hover:scale-125 hover:text-red-500"
+                                    className="w-6 h-6 mx-3 hover:cursor-pointer hover:scale-125 hover:text-red-500"
                                   >
                                     <path
                                       strokeLinecap="round"
@@ -336,20 +338,20 @@ function Cart() {
                       </tbody>
                     </table>
                     <div>
-                      <h1 className="font-bold my-2">
+                      <h1 className="my-2 font-bold">
                         {" "}
                         Total Price: {totalPrice}/-
                       </h1>
                     </div>
                     <button
                       onClick={handleCheckOut}
-                      className="border dark:border-gray-400 border-gray-900 rounded p-2 bg-gradient-to-r from-indigo-700 via-violet-700 to-orange-700  hover:text-gray-100 "
+                      className="p-2 border border-gray-900 rounded dark:border-gray-400 bg-gradient-to-r from-indigo-700 via-violet-700 to-orange-700 hover:text-gray-100 "
                     >
                       Check Out
                     </button>
                   </>
                 ) : (
-                  <div className="font-semi text-center text-4xl">
+                  <div className="text-4xl text-center font-semi">
                     Your cart is empty 😕{" "}
                   </div>
                 )}
@@ -360,6 +362,6 @@ function Cart() {
       </div>
     </>
   );
-}
+};
 
-export default Cart;
+export default CartPage;

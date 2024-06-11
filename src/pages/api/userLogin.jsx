@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 const jwtSecret = process.env.JWT_SECRET;
-export default async function handler(req, res) {
+const handler = async (req, res) => {
   let success = false;
 
   if (req.method === "POST") {
@@ -41,4 +41,5 @@ export default async function handler(req, res) {
       res.send("Server Error");
     }
   }
-}
+};
+export default handler;

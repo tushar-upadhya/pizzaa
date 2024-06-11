@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-function Orders() {
+const OrdersPage = () => {
   const [ordersData, setOrdersData] = useState([]);
   const fetchData = async () => {
     await fetch("api/myOrdersData", {
@@ -24,7 +24,7 @@ function Orders() {
   return (
     <>
       {ordersData.length > 0 ? (
-        <div className="container my-4 mx-auto">
+        <div className="container mx-auto my-4">
           {ordersData?.map((orders) => {
             return (
               <>
@@ -32,12 +32,12 @@ function Orders() {
                   return (
                     <>
                       {data.order_date ? (
-                        <div className="font-bold text-xl mb-2">
+                        <div className="mb-2 text-xl font-bold">
                           {" "}
                           {data.order_date} <hr />{" "}
                         </div>
                       ) : (
-                        <div className="my-4 w-96 border-black border-gradient p-4 dark:border-white rounded-lg">
+                        <div className="p-4 my-4 border-black rounded-lg w-96 border-gradient dark:border-white">
                           <div className="relative w-full rounded-lg h-72">
                             <Image
                               src={data.img}
@@ -47,8 +47,8 @@ function Orders() {
                               alt="pizza"
                             />
                           </div>
-                          <div className="font-bold text-xl">{data.name}</div>
-                          <div className="flex justify-between items-center">
+                          <div className="text-xl font-bold">{data.name}</div>
+                          <div className="flex items-center justify-between">
                             <div>{data.qty}</div>
                             <div>{data.size}</div>
                             <div className="font-semibold">{data.price}/-</div>
@@ -63,12 +63,12 @@ function Orders() {
           })}
         </div>
       ) : (
-        <div className="flex w-screen flex-col items-center justify-center h-screen">
+        <div className="flex flex-col items-center justify-center w-screen h-screen">
           <h1 className="text-4xl font-bold"> No previous Orders 😅</h1>
-          {/* <p className="text-gray-600 mt-4">No previous Orders 😅</p> */}
+          {/* <p className="mt-4 text-gray-600">No previous Orders 😅</p> */}
           <Link
             href="/"
-            className="text-violet-500 text-xl hover:font-bold mt-8"
+            className="mt-8 text-xl text-violet-500 hover:font-bold"
           >
             Go back to the home
           </Link>
@@ -76,6 +76,6 @@ function Orders() {
       )}
     </>
   );
-}
+};
 
-export default Orders;
+export default OrdersPage;

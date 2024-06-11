@@ -1,7 +1,7 @@
 import PizzaData from "@/models/PizzaData";
 import db from "@/utils/db";
 
-export default async function handler(req, res) {
+const handler = async (req, res) => {
   if (req.method === "POST") {
     await db.connect();
     for (let i = 0; i < req.body.length; i++) {
@@ -24,4 +24,5 @@ export default async function handler(req, res) {
     res.status(200).json({ data });
   }
   db.disconnect();
-}
+};
+export default handler;

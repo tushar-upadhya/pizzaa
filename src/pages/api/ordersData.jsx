@@ -1,7 +1,7 @@
 import Orders from "@/models/Orders";
 import db from "@/utils/db";
 
-export default async function handler(req, res) {
+const handler = async (req, res) => {
   if (req.method === "POST") {
     await db.connect();
     try {
@@ -42,4 +42,5 @@ export default async function handler(req, res) {
     await db.disconnect();
     //{order_data:[{Date},{MAr},{Peppy},{}],email: "", order_date:Date() }
   }
-}
+};
+export default handler;

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 
-function Signup() {
+const SignUpPage = () => {
   const router = useRouter();
   const [credentials, setCredentials] = useState({
     name: "",
@@ -49,17 +49,17 @@ function Signup() {
           'url("https://images.pexels.com/photos/1565982/pexels-photo-1565982.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
         backgroundSize: "cover",
       }}
-      className="flex justify-center items-center"
+      className="flex items-center justify-center"
     >
       <div className="container w-full max-w-md">
         <form
           onSubmit={handleSubmit}
-          className="bg-gray-100 dark:bg-gray-900 dark:text-gray-100 border-gradient rounded-lg shadow-2xl px-8 pt-6 pb-8 mb-4"
+          className="px-8 pt-6 pb-8 mb-4 bg-gray-100 rounded-lg shadow-2xl dark:bg-gray-900 dark:text-gray-100 border-gradient"
         >
           <div className="mb-4">
             <label
               htmlFor="name"
-              className="block text-gray-700  dark:text-gray-300 text-sm font-bold mb-2"
+              className="block mb-2 text-sm font-bold text-gray-700 dark:text-gray-300"
             >
               Name
             </label>
@@ -69,14 +69,14 @@ function Signup() {
               onChange={handleChange}
               type="text"
               required
-              className="shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 focus:border-indigo-700 text-gray-700 dark:text-gray-100  leading-tight focus:outline-none focus:shadow-outline"
+              className="w-full px-3 py-2 leading-tight text-gray-700 border border-gray-300 rounded shadow appearance-none focus:border-indigo-700 dark:text-gray-100 focus:outline-none focus:shadow-outline"
               value={credentials.name}
             />
           </div>
           <div className="mb-4">
             <label
               htmlFor="email"
-              className="block text-gray-700  dark:text-gray-300 text-sm font-bold mb-2"
+              className="block mb-2 text-sm font-bold text-gray-700 dark:text-gray-300"
             >
               Email
             </label>
@@ -86,14 +86,14 @@ function Signup() {
               onChange={handleChange}
               type="email"
               required
-              className="shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 focus:border-indigo-700 text-gray-700 dark:text-gray-100  leading-tight focus:outline-none focus:shadow-outline"
+              className="w-full px-3 py-2 leading-tight text-gray-700 border border-gray-300 rounded shadow appearance-none focus:border-indigo-700 dark:text-gray-100 focus:outline-none focus:shadow-outline"
               value={credentials.email}
             />
           </div>
           <div className="mb-4">
             <label
               htmlFor="password"
-              className="block text-gray-700  dark:text-gray-300 text-sm font-bold mb-2"
+              className="block mb-2 text-sm font-bold text-gray-700 dark:text-gray-300"
             >
               Password
             </label>
@@ -103,14 +103,14 @@ function Signup() {
               name="password"
               required
               type="password"
-              className="shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 focus:border-indigo-700 text-gray-700 dark:text-gray-100  leading-tight focus:outline-none focus:shadow-outline"
+              className="w-full px-3 py-2 leading-tight text-gray-700 border border-gray-300 rounded shadow appearance-none focus:border-indigo-700 dark:text-gray-100 focus:outline-none focus:shadow-outline"
               value={credentials.password}
             />
           </div>
           <div className="mb-4">
             <label
               htmlFor="geolocation"
-              className="block text-gray-700  dark:text-gray-300 text-sm font-bold mb-2"
+              className="block mb-2 text-sm font-bold text-gray-700 dark:text-gray-300"
             >
               Address
             </label>
@@ -120,19 +120,19 @@ function Signup() {
               name="geolocation"
               required
               type="text"
-              className="shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 focus:border-indigo-700 text-gray-700 dark:text-gray-100  leading-tight focus:outline-none focus:shadow-outline"
+              className="w-full px-3 py-2 leading-tight text-gray-700 border border-gray-300 rounded shadow appearance-none focus:border-indigo-700 dark:text-gray-100 focus:outline-none focus:shadow-outline"
               value={credentials.geolocation}
             />
           </div>
           <div className="flex items-center justify-between"></div>
           <button
             type="submit"
-            className="border font-bold text-gray-900 dark:text-gray-100 dark:border-gray-400 border-gray-900 rounded p-2 mr-2 hover:bg-gradient-to-r from-indigo-700 via-violet-700 to-orange-700  hover:text-gray-100"
+            className="p-2 mr-2 font-bold text-gray-900 border border-gray-900 rounded dark:text-gray-100 dark:border-gray-400 hover:bg-gradient-to-r from-indigo-700 via-violet-700 to-orange-700 hover:text-gray-100"
           >
             Signup
           </button>
           <Link href={"/login"} style={{ all: "unset" }}>
-            <button className="border text-gray-900 dark:text-gray-100 font-bold dark:border-gray-400 border-gray-900 rounded mr-2 p-2 hover:bg-gradient-to-r from-indigo-700 via-violet-700 to-orange-700  hover:text-gray-100">
+            <button className="p-2 mr-2 font-bold text-gray-900 border border-gray-900 rounded dark:text-gray-100 dark:border-gray-400 hover:bg-gradient-to-r from-indigo-700 via-violet-700 to-orange-700 hover:text-gray-100">
               Already a user?
             </button>
           </Link>
@@ -140,6 +140,6 @@ function Signup() {
       </div>
     </div>
   );
-}
+};
 
-export default Signup;
+export default SignUpPage;

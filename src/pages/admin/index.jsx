@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Custom404 from "../404";
 
 const sidesPriceOption = { single: "", double: "" };
 const pizzaPriceOption = { regular: "", medium: "", large: "" };
-function Admin() {
+
+const AdminPage = () => {
   const [mounted, setMounted] = useState(false);
   const [foodData, setFoodData] = useState({
     name: "",
@@ -13,6 +14,7 @@ function Admin() {
     description: "",
     img: "",
   });
+
   const handleChange = (e) => {
     setFoodData((prevData) => {
       return { ...prevData, [e.target.name]: e.target.value };
@@ -33,6 +35,7 @@ function Admin() {
       }
     }
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("api/createFoodData", {
@@ -47,6 +50,7 @@ function Admin() {
       alert("Failed to create");
     }
   };
+
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("isAdmin")) === true) {
       setMounted(true);
@@ -64,17 +68,17 @@ function Admin() {
               'url("https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
             backgroundSize: "cover",
           }}
-          className=" flex py-10 justify-center content-center items-center"
+          className="flex items-center content-center justify-center py-10 "
         >
-          <div className=" container w-full max-w-md">
+          <div className="container w-full max-w-md ">
             <form
               onSubmit={handleSubmit}
-              className="bg-gray-100 dark:bg-gray-900 dark:text-gray-100 border-gradient rounded-lg shadow-2xl px-8 pt-6 pb-8 mb-4"
+              className="px-8 pt-6 pb-8 mb-4 bg-gray-100 rounded-lg shadow-2xl dark:bg-gray-900 dark:text-gray-100 border-gradient"
             >
               <div className="mb-4">
                 <label
                   htmlFor="name"
-                  className="block text-gray-700  dark:text-gray-300 text-sm font-bold mb-2"
+                  className="block mb-2 text-sm font-bold text-gray-700 dark:text-gray-300"
                 >
                   Food Name
                 </label>
@@ -84,14 +88,14 @@ function Admin() {
                   onChange={handleChange}
                   type="text"
                   required
-                  className="shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 focus:border-indigo-700 text-gray-700 dark:text-gray-100  leading-tight focus:outline-none focus:shadow-outline"
+                  className="w-full px-3 py-2 leading-tight text-gray-700 border border-gray-300 rounded shadow appearance-none focus:border-indigo-700 dark:text-gray-100 focus:outline-none focus:shadow-outline"
                   value={foodData.name}
                 />
               </div>
               <div className="mb-4">
                 <label
                   htmlFor="foodCategory"
-                  className="block text-gray-700  dark:text-gray-300 text-sm font-bold mb-2"
+                  className="block mb-2 text-sm font-bold text-gray-700 dark:text-gray-300"
                 >
                   Food Category
                 </label>
@@ -102,7 +106,7 @@ function Admin() {
                   type="foodCategory"
                   required
                   style={{ "-webkit-appearance": "auto" }}
-                  className="shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 focus:border-indigo-700 text-gray-700 dark:text-gray-100  leading-tight focus:outline-none focus:shadow-outline"
+                  className="w-full px-3 py-2 leading-tight text-gray-700 border border-gray-300 rounded shadow appearance-none focus:border-indigo-700 dark:text-gray-100 focus:outline-none focus:shadow-outline"
                   value={foodData.foodCategory}
                 >
                   <option value="">Select Food Category</option>
@@ -113,7 +117,7 @@ function Admin() {
               <div className="mb-4">
                 <label
                   htmlFor="foodType"
-                  className="block text-gray-700  dark:text-gray-300 text-sm font-bold mb-2"
+                  className="block mb-2 text-sm font-bold text-gray-700 dark:text-gray-300"
                 >
                   Food Type
                 </label>
@@ -122,7 +126,7 @@ function Admin() {
                   name="foodType"
                   required
                   style={{ "-webkit-appearance": "auto" }}
-                  className="shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 focus:border-indigo-700 text-gray-700 dark:text-gray-100  leading-tight focus:outline-none focus:shadow-outline"
+                  className="w-full px-3 py-2 leading-tight text-gray-700 border border-gray-300 rounded shadow appearance-none focus:border-indigo-700 dark:text-gray-100 focus:outline-none focus:shadow-outline"
                   value={foodData.foodType}
                 >
                   <option value="">Select food type</option>
@@ -135,16 +139,16 @@ function Admin() {
                 <div className="mb-4">
                   <label
                     htmlFor="geolocation"
-                    className="block text-gray-700  dark:text-gray-300 text-sm font-bold mb-2"
+                    className="block mb-2 text-sm font-bold text-gray-700 dark:text-gray-300"
                   >
                     Food Price
                   </label>
                   {foodData.price !== "" &&
                     Object.keys(foodData.price).map((key) => {
                       return (
-                        <div key={key} className="ml-4 mb-4">
+                        <div key={key} className="mb-4 ml-4">
                           <label
-                            className="block text-gray-700  dark:text-gray-300 text-sm font-bold mb-2"
+                            className="block mb-2 text-sm font-bold text-gray-700 dark:text-gray-300"
                             htmlFor={key}
                           >
                             {key}
@@ -164,7 +168,7 @@ function Admin() {
                                 },
                               });
                             }}
-                            className="shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 focus:border-indigo-700 text-gray-700 dark:text-gray-100  leading-tight focus:outline-none focus:shadow-outline"
+                            className="w-full px-3 py-2 leading-tight text-gray-700 border border-gray-300 rounded shadow appearance-none focus:border-indigo-700 dark:text-gray-100 focus:outline-none focus:shadow-outline"
                           />
                         </div>
                       );
@@ -174,7 +178,7 @@ function Admin() {
               <div className="mb-4">
                 <label
                   htmlFor="description"
-                  className="block text-gray-700  dark:text-gray-300 text-sm font-bold mb-2"
+                  className="block mb-2 text-sm font-bold text-gray-700 dark:text-gray-300"
                 >
                   Description
                 </label>
@@ -185,14 +189,14 @@ function Admin() {
                   onChange={handleChange}
                   type="text"
                   required
-                  className="shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 focus:border-indigo-700 text-gray-700 dark:text-gray-100  leading-tight focus:outline-none focus:shadow-outline"
+                  className="w-full px-3 py-2 leading-tight text-gray-700 border border-gray-300 rounded shadow appearance-none focus:border-indigo-700 dark:text-gray-100 focus:outline-none focus:shadow-outline"
                   value={foodData.description}
                 />
               </div>
               <div className="mb-4">
                 <label
                   htmlFor="img"
-                  className="block text-gray-700  dark:text-gray-300 text-sm font-bold mb-2"
+                  className="block mb-2 text-sm font-bold text-gray-700 dark:text-gray-300"
                 >
                   Food Image
                 </label>
@@ -202,14 +206,14 @@ function Admin() {
                   onChange={handleChange}
                   type="url"
                   required
-                  className="shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 focus:border-indigo-700 text-gray-700 dark:text-gray-100  leading-tight focus:outline-none focus:shadow-outline"
+                  className="w-full px-3 py-2 leading-tight text-gray-700 border border-gray-300 rounded shadow appearance-none focus:border-indigo-700 dark:text-gray-100 focus:outline-none focus:shadow-outline"
                   value={foodData.img}
                 />
               </div>
               <div className="flex items-center justify-between"></div>
               <button
                 type="submit"
-                className="border font-bold text-gray-900 dark:text-gray-100 dark:border-gray-400 border-gray-900 rounded p-2 mr-2 hover:bg-gradient-to-r from-indigo-700 via-violet-700 to-orange-700  hover:text-gray-100"
+                className="p-2 mr-2 font-bold text-gray-900 border border-gray-900 rounded dark:text-gray-100 dark:border-gray-400 hover:bg-gradient-to-r from-indigo-700 via-violet-700 to-orange-700 hover:text-gray-100"
               >
                 Create
               </button>
@@ -221,6 +225,6 @@ function Admin() {
       )}
     </>
   );
-}
+};
 
-export default Admin;
+export default AdminPage;

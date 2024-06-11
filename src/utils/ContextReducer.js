@@ -1,5 +1,7 @@
 import { createContext, useMemo, useReducer } from "react";
 
+export const CartContext = createContext();
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD":
@@ -66,8 +68,6 @@ const reducer = (state, action) => {
       console.log("Action type");
   }
 };
-
-export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, []);

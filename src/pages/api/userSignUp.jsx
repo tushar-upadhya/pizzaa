@@ -4,7 +4,8 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 const jwtSecret = process.env.JWT_SECRET;
-export default async function handler(req, res) {
+
+const handler = async (req, res) => {
   let success = false;
   const salt = await bcrypt.genSalt(10);
 
@@ -40,4 +41,6 @@ export default async function handler(req, res) {
   await db.disconnect();
 
   res.status(200).json({ name: "John Doe" });
-}
+};
+
+export default handler;
