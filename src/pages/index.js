@@ -10,8 +10,10 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home({ data }) {
   let categories = new Set();
   let categoryArray;
+
   const [typeFilter, setTypeFilter] = useState(false);
   const foodData = [];
+
   const handleData = () => {
     data?.map((data) => {
       return foodData.push(data), categories.add(data.category);
@@ -19,6 +21,7 @@ export default function Home({ data }) {
   };
 
   handleData();
+
   useEffect(() => {
     localStorage.setItem("isAdmin", false); //added this line here to prevent anyone from accessing /admin if not logged in.
   }, []);
@@ -81,13 +84,13 @@ export default function Home({ data }) {
             <>
               <div
                 key={category}
-                className=" text-4xl mt-10 mb-3 uppercase font-bold"
+                className="mt-10 mb-3 text-4xl font-bold uppercase "
               >
                 {category}
               </div>
               <hr />
               <div className="flex flex-col items-center justify-center">
-                <div className=" grid mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+                <div className="grid grid-cols-1 mx-auto md:grid-cols-2 lg:grid-cols-3">
                   {foodData
                     ?.filter((foodData) => category === foodData.category)
                     ?.filter((foodData) =>

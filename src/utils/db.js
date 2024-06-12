@@ -16,6 +16,7 @@ async function connect() {
     }
     await mongoose.disconnect();
   }
+
   const db = await mongoose.connect(mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -38,4 +39,5 @@ async function disconnect() {
 }
 
 const db = { connect, disconnect };
+
 export default db;
